@@ -1,50 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">CRUD</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CicloData</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
 
-            <!-- Dropdown Users -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsers" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Usuários
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownUsers">
-                    <a class="dropdown-item" href="/users/new">Cadastrar Usuário</a>
-                    <a class="dropdown-item" href="/users">Listar Usuários</a>
-                </div>
-            </li>
+        .sidebar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 20px;
+            z-index: 1000;
+            border-radius: 15px; /* Borda arredondada */
+        }
 
-            <!-- Dropdown Categorias -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategorias" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categorias
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownCategorias">
-                    <a class="dropdown-item" href="/categorias/new">Cadastrar Categoria</a>
-                    <a class="dropdown-item" href="/categorias">Listar Categorias</a>
-                </div>
-            </li>
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+            text-shadow: 1px 1px 2px black; /* Sombra no texto */
+        }
 
-            <!-- Dropdown Produtos -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProdutos" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Produtos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownProdutos">
-                    <a class="dropdown-item" href="/produtos/new">Cadastrar Produto</a>
-                    <a class="dropdown-item" href="/produtos">Listar Produtos</a>
-                </div>
-            </li>
-        </ul>
+        .sidebar a:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .sidebar .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-left: 20px;
+            text-shadow: 1px 1px 2px black; /* Sombra no texto */
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <a class="navbar-brand" href="/">Menu</a>
+            <a href="/users">Usuarios Cadastrados</a>
+            <a href="/users/new">Cadastrar Usuarios</a>
+            <a href="/bikes">Produtos</a>
+            <a href="/bikes/new">Cadastrar Produtos</a>
+        </div>
     </div>
-</nav>
+</body>
+</html>

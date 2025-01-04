@@ -83,17 +83,12 @@ const userController = {
             res.redirect('/users');
         });
     },
-
-    searchUsers: (req, res) => {
-        const search = req.query.search || '';
-
-        User.searchByName(search, (err, users) => {
-            if (err) {
-                return res.status(500).json({ error: err });
-            }
-            res.json({ users });
-        });
-    },
 };
+
+exports.getUsers = async (req, res) => {
+    const users = await User.find();
+    res.json(users);
+  };
+  
 
 module.exports = userController;

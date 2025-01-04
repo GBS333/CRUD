@@ -1,41 +1,49 @@
-require('dotenv').config();
 const express = require('express');
-const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
-const path = require('path');
-const authRoutes = require('./routes/authRoutes');
-const indexRoutes = require('./routes/indexRoutes');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const expressLayouts = require('express-ejs-layouts');
 const userRoutes = require('./routes/userRoutes');
-
-// Inicializa a aplicação
-const app = express(); 
-
-// Configuração do parser de corpo (body parser)
-app.use(express.urlencoded({ extended: false }));
-
-// Importa o banco de dados apenas uma vez
-const db = require('./config/db');
-
-// Configuração de sessões com armazenamento no MySQL
-app.use(session({
-    secret: 'chave-secreta',
-    resave: false,
-    saveUninitialized: false,
-    store: new MySQLStore({}, db)
-}));
-
-// Configuração da pasta de visualizações e EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Usar as rotas de autenticação
-app.use(authRoutes);
-
-app.use('/', indexRoutes);
-app.use('/users', userRoutes);
-
-// Iniciar o servidor
+const indexRoutes = require('./routes/indexRoutes');
+const bikesRouter = require('./routes/bikesRoutes');
+const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(expressLayouts);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
+app.use('/',  indexRoutes)
+app.use('/users', userRoutes);// models/userModel.js
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  // ...
+});
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
+
+// models/bikeModel.js
+const mongoose = require('mongoose');
+
+const bikeSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  // ...
+});
+
+const Bike = mongoose.model('Bike', bikeSchema);
+
+module.exports = Bike;
+app.use('/bikes', bikesRouter);
+
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });

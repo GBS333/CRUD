@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os Produtos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <head>
+        <title>Usuarios</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                height: 100vh;
+                position: relative;
+                background-color: rgba(0, 0, 0, 0.7);
+                /* Fundo escuro */
+                color: white;
+                /* Texto branco */
+                text-shadow: 1px 1px 2px black;
+                /* Sombra no texto */
+            }
+    
+            .main-content {
+                margin-left: 260px;
+                /* Ajuste conforme necessário */
+                padding: 20px;
+                border-radius: 15px;
+                /* Borda arredondada */
+            }
+    
+            thead {
+                width: 100%;
+                border-collapse: collapse;
+                text-align: left;
+            }
+    
+            th,
+            td {
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
+                color: white;
+                /* Texto branco */
+                text-shadow: 1px 1px 2px black;
+                /* Sombra no texto */
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todos os Produtos</h1>
+        
+        <!-- Botão para adicionar um novo produto -->
+        <a href="/bikes/new" class="btn btn-success mb-3">Adicionar Novo Produto</a>
+        
+        <!-- Tabela de Produtos -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% bikes.forEach(bike => { %>
+                    <tr>
+                        <td><%= bike.id %></td>
+                        <td><%= bike.name %></td>
+                        <td>R$ <%= bike.price.toFixed(2) %></td>
+                        <td><%= bike.category %></td>
+                        <td>
+                            <a href="/bikes/<%= bike.id %>" class="btn btn-primary">Visualizar</a>
+                            <a href="/bikes/<%= bike.id %>/edit" class="btn btn-warning">Editar</a>
+                            <form action="/bikes/<%= bike.id %>?_method=DELETE" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

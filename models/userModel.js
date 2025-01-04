@@ -1,9 +1,10 @@
 const db = require('../config/db');
 
-const User = {
+const user = {
+    // Cria um novo produto
     create: (user, callback) => {
-        const query = 'INSERT INTO users (username, password, role) VALUES (?, ?, ?)';
-        db.query(query, [user.username, user.password, user.role], (err, results) => {
+        const query = 'INSERT INTO user (name, password, role) VALUES (?, ?, ?)';
+        db.query(query, [user.name, user.password, user.role], (err, results) => {
             if (err) {
                 return callback(err);
             }
@@ -11,8 +12,9 @@ const User = {
         });
     },
 
+    // Encontra um produto por ID
     findById: (id, callback) => {
-        const query = 'SELECT * FROM users WHERE id = ?';
+        const query = 'SELECT * FROM user WHERE id = ?';
         db.query(query, [id], (err, results) => {
             if (err) {
                 return callback(err);
@@ -21,19 +23,10 @@ const User = {
         });
     },
 
-    findByUsername: (username, callback) => {
-        const query = 'SELECT * FROM users WHERE username = ?';
-        db.query(query, [username], (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            callback(null, results[0]);
-        });
-    },
-
+    // Atualiza um produto existente
     update: (id, user, callback) => {
-        const query = 'UPDATE users SET username = ?, password = ?, role = ? WHERE id = ?';
-        db.query(query, [user.username, user.password, user.role, id], (err, results) => {
+        const query = 'UPDATE user SET name = ?, password = ?, role = ? WHERE id = ?';
+        db.query(query, [user.name, user.password, user.role, id], (err, results) => {
             if (err) {
                 return callback(err);
             }
@@ -41,8 +34,9 @@ const User = {
         });
     },
 
+    // Deleta um produto por ID
     delete: (id, callback) => {
-        const query = 'DELETE FROM users WHERE id = ?';
+        const query = 'DELETE FROM user WHERE id = ?';
         db.query(query, [id], (err, results) => {
             if (err) {
                 return callback(err);
@@ -51,8 +45,9 @@ const User = {
         });
     },
 
+    // Obtém todos os produtos
     getAll: (callback) => {
-        const query = 'SELECT * FROM users';
+        const query = 'SELECT * FROM user';
         db.query(query, (err, results) => {
             if (err) {
                 return callback(err);
@@ -60,16 +55,6 @@ const User = {
             callback(null, results);
         });
     },
-
-    searchByName: (name, callback) => {
-        const query = 'SELECT * FROM users WHERE username LIKE ?';
-        db.query(query, [`%${name}%`], (err, results) => {
-            if (err) {
-                return callback(err);
-            }
-            callback(null, results);
-        });
-    },    
 };
 
-module.exports = User;
+module.exports = user;
