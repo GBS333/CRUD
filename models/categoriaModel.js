@@ -1,10 +1,9 @@
 const db = require('../config/db');
 
-const bikes = {
-    // Cria um novo produto
-    create: (bikes, callback) => {
-        const query = 'INSERT INTO bikes (name, price, category) VALUES (?, ?, ?)';
-        db.query(query, [bikes.name, bikes.price, bikes.category], (err, results) => {
+const Categoria = {
+    create: (categoria, callback) => {
+        const query = 'INSERT INTO categorias (nome) VALUES (?)';
+        db.query(query, [categoria.nome], (err, results) => {
             if (err) {
                 return callback(err);
             }
@@ -12,9 +11,8 @@ const bikes = {
         });
     },
 
-    // Encontra um produto por ID
     findById: (id, callback) => {
-        const query = 'SELECT * FROM bikes WHERE id = ?';
+        const query = 'SELECT * FROM categorias WHERE id = ?';
         db.query(query, [id], (err, results) => {
             if (err) {
                 return callback(err);
@@ -23,10 +21,19 @@ const bikes = {
         });
     },
 
-    // Atualiza um produto existente
-    update: (id, bikes, callback) => {
-        const query = 'UPDATE bikes SET name = ?, price = ?, category = ? WHERE id = ?';
-        db.query(query, [bikes.name, bikes.price, bikes.category, id], (err, results) => {
+    findByCategorianame: (nome, callback) => {
+        const query = 'SELECT * FROM categorias WHERE nome = ?';
+        db.query(query, [nome], (err, results) => {
+            if (err) {
+                return callback(err);
+            }
+            callback(null, results[0]);
+        });
+    },
+
+    update: (id, categoria, callback) => {
+        const query = 'UPDATE categorias SET nome = ? WHERE id = ?';
+        db.query(query, [categoria.nome,id], (err, results) => {
             if (err) {
                 return callback(err);
             }
@@ -34,9 +41,8 @@ const bikes = {
         });
     },
 
-    // Deleta um produto por ID
     delete: (id, callback) => {
-        const query = 'DELETE FROM bikes WHERE id = ?';
+        const query = 'DELETE FROM categorias WHERE id = ?';
         db.query(query, [id], (err, results) => {
             if (err) {
                 return callback(err);
@@ -45,9 +51,8 @@ const bikes = {
         });
     },
 
-    // Obtém todos os produtos
     getAll: (callback) => {
-        const query = 'SELECT * FROM bikes';
+        const query = 'SELECT * FROM categorias';
         db.query(query, (err, results) => {
             if (err) {
                 return callback(err);
@@ -57,4 +62,5 @@ const bikes = {
     },
 };
 
-module.exports = bikes;
+
+module.exports = Categoria;

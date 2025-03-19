@@ -12,44 +12,62 @@
             padding: 0;
             height: 100vh;
             display: flex;
+        }
+        .vertical-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            /* Fundo escuro */
-            color: white;
-            /* Texto branco */
-            text-shadow: 1px 1px 2px black;
-            /* Sombra no texto */
+            padding-top: 10px;
         }
-    
-        .welcome-message {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            text-align: center;
+        .vertical-navbar .navbar-brand,
+        .vertical-navbar .nav-link {
+            color: #fff !important;
+            padding: 10px 15px;
         }
-    
-        .logo {
+        .vertical-navbar .nav-link:hover {
+            background-color: #333;
+        }
+        .vertical-navbar .navbar-nav {
+            flex-direction: column;
+            width: 100%;
+        }
+        .vertical-navbar .dropdown-menu {
+            background-color: #333;
+            color: #fff;
+        }
+        .vertical-navbar .dropdown-menu .dropdown-item {
+            color: #fff;
+        }
+        .vertical-navbar .dropdown-menu .dropdown-item:hover {
+            background-color: #444;
+        }
+        .main-content {
+            margin-left: 250px;
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            width: calc(100% - 250px);
         }
-    
-        .logo img {
+        .welcome-section img {
             max-width: 100%;
             height: auto;
-            max-width: 300px;
-            /* Ajuste conforme necessário */
-            display: block;
+            margin-bottom: 20px;
         }
     </style>
 </head>
-<body>
-    <div class="welcome-message">
-        Bem-vindo a CicloData!
-    </div>
-    <div class="logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe-cfVblI3KP-NQBYh3nc1KUuH0pZ4sBrVwQ&s" alt="Logo da Empresa">
+    <div class="main-content">
+        <div class="welcome-section">
+            <h1>Bem-vindo ao CicloData</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe-cfVblI3KP-NQBYh3nc1KUuH0pZ4sBrVwQ&s" alt="CicloData Logo">
+
+        </div>
     </div>
 </body>
 </html>

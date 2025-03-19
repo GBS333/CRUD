@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>CicloData</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciclodata</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -88,15 +88,19 @@
     </style>
 </head>
 <body>
-    <%- include('partials/navbar') %>
-    <div class="main-content">
+        <%- include('partials/navbar') %>
+        <div class="main-content">
         <%- body %>
-    </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <div class="carousel-container">
         <div class="carousel">
             <div class="carousel-images">
                 <img src="https://scontent.fccm8-1.fna.fbcdn.net/v/t1.6435-9/68878739_2446236982288607_8326716889904447488_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=0b6b33&_nc_eui2=AeHd237WbLPbIk08zHGxMn8SEzp_gexhJUcTOn-B7GElR9gE_s4MbmWcyT-jjirDR2dj0X1xwvB7sBD2wmjuo-NC&_nc_ohc=gMmUMTxfii8Q7kNvgHGBzfE&_nc_oc=AdjrCPwuKCczSG_tXuTPwhnH8p6yp47isGvYp955bbD4wtzljiS0lzUYgLdvRnQdbRA&_nc_zt=23&_nc_ht=scontent.fccm8-1.fna&_nc_gid=AX0m5_Np81KPHEzCkHOFpPy&oh=00_AYDvo_toEgId49VRgP2gImzCP6PIM8ngeXH9tVDAY_nudg&oe=67951CF4" alt="Foto 1">
-                <img src="https://scontent.fccm8-1.fna.fbcdn.net/v/t39.30808-6/463754520_4594427960782916_1914159846695079877_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEYJ1oy12UX0EwIYm0bYw8FNs8_fGKvuZc2zz98Yq-5l-5tujxcmH-wNy_nH8JIDF67XQ_rRH0Qt1poy-jP1td9&_nc_ohc=r62MZuYCtb8Q7kNvgFwne-M&_nc_oc=AdgY9bCxizjJjEMcwPyVwr3LP35QjgN3iZsD8MBBRhTdvQlSJ1CjGO6uRhy-9voFuTU&_nc_zt=23&_nc_ht=scontent.fccm8-1.fna&_nc_gid=ATONGNtc_P6jpBpxbJdGVqg&oh=00_AYBJZjgjf65v0erxtyX_uSN7L8SiSCDDm3kIcleyCBLzvw&oe=67736D83" alt="Foto 2">
+                <img src="https://i2.wp.com/www.trisportmag.com.br/wp-content/uploads/2021/07/CadenciaAUTO-8.jpg?fit=1600%2C1067&ssl=1" alt="Foto 2">
                 <img src="https://scontent.fccm8-1.fna.fbcdn.net/v/t1.6435-9/146380327_5023733214334518_7822639521273407130_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=XOW0e2xbYOsQ7kNvgFlaErk&_nc_oc=Adgmg_7SoFx2aMcaE6sr3Ar88fQLqLdeFD7tUmKz8odrjJuwTeoaekHjrWHWvUa4TKc&_nc_zt=23&_nc_ht=scontent.fccm8-1.fna&_nc_gid=AmaJWmOAMHReSaGnV1vDRdM&oh=00_AYAiiZOOqq-kFcCwecnigD62nw4-O8XmUNpYdb4wsAUC-Q&oe=678BD5CD" alt="Foto 3">
             </div>
         </div>
@@ -127,7 +131,7 @@
             updateCarousel(currentIndex);
         }
 
-        setInterval(autoSlide, 3000); // Troca de imagem a cada 3 segundos
+        setInterval(autoSlide, 15000); // Troca de imagem a cada 3 segundos
 
         indicators.forEach(button => {
             button.addEventListener('click', () => {
